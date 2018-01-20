@@ -1,4 +1,4 @@
-var movieMania = angular.module('movieMania',['ngRoute']);
+var movieMania = angular.module('movieMania',['ngRoute', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']);
 movieMania.config(function ($routeProvider) {
 	$routeProvider
 	.when('/',{
@@ -7,19 +7,19 @@ movieMania.config(function ($routeProvider) {
 	})
     .when('/action',{
 		templateUrl: 'pages/action.html',
-		controller: 'mainController'
+		controller: 'actionController'
     })
     .when('/comedy',{
 		templateUrl: 'pages/comedy.html',
-		controller: 'mainController'
+		controller: 'comedyController'
     })
     .when('/thriller',{
 		templateUrl: 'pages/thriller.html',
-		controller: 'mainController'
+		controller: 'thrillerController'
     })
     .when('/romance',{
 		templateUrl: 'pages/romance.html',
-		controller: 'mainController'
+		controller: 'romanceController'
     })
     
 })
@@ -43,9 +43,36 @@ movieMania.controller('loginController',function($scope, $location) {
 
 
 })
-angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
 
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'image1.jpeg';
+movieMania.controller('thrillerController',function($scope,$routeParams,$http){
+  })
+
+movieMania.controller('comedyController',function($scope,$routeParams,$http){
+    
+  })
+
+movieMania.controller('romanceController',function($scope,$routeParams,$http){
+    
+  })
+
+  movieMania.controller('actionController',function($scope, $routeParams, $http){
+
+    $scope.movies = [];    
+
+  $scope.movies = function(url) {
+  $http({
+	'method': 'GET',
+	'url': 'https://api.themoviedb.org/3/movie/upcoming?api_key=9841b8703d599b55eb9c5377636d1e52&language=en-US&page=1',
+	'headers': {},
+    'data': {},
+}).then(function (response) {
+    var movies = response.data.outputs[0].data.concepts;
+      var list = '';
+      for (var i =0;i < movies.length;i++) {
+          list += '<div class="movies">' + movies[i].name + '</div>'
+      }
+    console.log(list);
+}, function (xhr) {
+    console.log(xhr);
+})}
 })
-

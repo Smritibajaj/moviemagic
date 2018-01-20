@@ -39,5 +39,6 @@ h1 {
     margin: auto;
     padding: 10px;
 }
-
+.carddemoBasicUsage .card-media {
+    background-color: #999999; }
 

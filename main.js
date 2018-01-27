@@ -56,23 +56,5 @@ movieMania.controller('romanceController',function($scope,$routeParams,$http){
   })
 
   movieMania.controller('actionController',function($scope, $routeParams, $http){
-
-    $scope.movies = [];    
-
-  $scope.movies = function(url) {
-  $http({
-	'method': 'GET',
-	'url': 'https://api.themoviedb.org/3/movie/upcoming?api_key=9841b8703d599b55eb9c5377636d1e52&language=en-US&page=1',
-	'headers': {},
-    'data': {},
-}).then(function (response) {
-    var movies = response.data.outputs[0].data.concepts;
-      var list = '';
-      for (var i =0;i < movies.length;i++) {
-          list += '<div class="movies">' + movies[i].name + '</div>'
-      }
-    console.log(list);
-}, function (xhr) {
-    console.log(xhr);
-})}
-})
+      
+  })

@@ -1,68 +1,40 @@
 <div ng-controller="comedyController" ng-cloak >
-        <md-content class="md-padding" layout-md="column" layout="row">
-          <div flex-md flex-gt-md="50" layout="column">
-            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-              <md-card-title>
-                <md-card-title-text>
-                  <span class="md-headline">Card with image</span>
-                  <span class="md-subhead">Large</span>
-                </md-card-title-text>
-                <md-card-title-media>
-                  <div class="md-media-lg card-media"></div>
-                </md-card-title-media>
-              </md-card-title>
-              <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-              </md-card-actions>
-            </md-card>
-
-            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <md-card-title>
-                      <md-card-title-text>
-                        <span class="md-headline">Card with image</span>
-                        <span class="md-subhead">Large</span>
-                      </md-card-title-text>
-                      <md-card-title-media>
-                        <div class="md-media-lg card-media"></div>
-                      </md-card-title-media>
-                    </md-card-title>
-                    <md-card-actions layout="row" layout-align="end center">
-                      <md-button>Action 1</md-button>
-                      <md-button>Action 2</md-button>
-                    </md-card-actions>
-                  </md-card>
+    <div>Movies Info Goes here</div>
+    <div class="movie"  ng-if="movie.name"><!--ng-if to check valid pages-->
+        <div class="rest-wrapper">
+            <div class="image">
+                <img ng-src="{{movie.image}}" height="100" width="100">
+            </div>
+            <div class="rest-info">
+                <div class="rest-category">
+                   <small>{{movie.category}} </small>
                 </div>
-                <div flex-md flex-gt-md="50" layout="column">
-                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">Card with image</span>
-                            <span class="md-subhead">Large</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media"></div>
-                          </md-card-title-media>
-                        </md-card-title>
-                        <md-card-actions layout="row" layout-align="end center">
-                          <md-button>Action 1</md-button>
-                          <md-button>Action 2</md-button>
-                        </md-card-actions>
-                      </md-card>
-
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                            <md-card-title>
-                              <md-card-title-text>
-                                <span class="md-headline">Card with image</span>
-                                <span class="md-subhead">Large</span>
-                              </md-card-title-text>
-                              <md-card-title-media>
-                                <div class="md-media-lg card-media"></div>
-                              </md-card-title-media>
-                            </md-card-title>
-                            <md-card-actions layout="row" layout-align="end center">
-                              <md-button>Action 1</md-button>
-                              <md-button>Action 2</md-button>
-                            </md-card-actions>
-                          </md-card>
-                </div> 
+                <div class="rest-name">
+                        <a ng-href="#!/movie/{{movie.id}}"><strong>{{movie.name}}</strong></a>
+                    </div>
+                <div>
+                   <strong> {{movie.location}}</strong>
+                </div>
+                <div class="rest-address">
+                    {{movie.address}}
+                </div>
+            </div>
+        </div>
+        <div class="rest-extra">
+            <div class="type">
+                <div><small>Cuisines:</small></div>
+                <div><small>Cost for Two: </small></div>
+                <div><small>Hours:</small></div>
+            </div>
+            <div class="value">
+                <div>{{movie.cuisines}}</div>
+                <div>₹{{movie.cost | number}}</div>
+                <div>{{movie.hours}}</div>
+            </div>
+        </div>
+        <div class="rating">
+            <strong>{{movie.vote}}</strong>
+        </div>
+    </div>
+</div>
+    
